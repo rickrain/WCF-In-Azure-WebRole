@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Calculator.Azure.CloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-03.2.0">
+  <Role name="Calculator.WebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=rickraindev;AccountKey=3wmZI2G6/bjkVaxu9Qiz7CyrWzmWiLFBGNNVKVgi51zfcGq9CTKfG2bfwvowRz5IT3lGz4X2ELi8oXhI/lT0tQ==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="rickrain" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCED9YZZf7AE2pTIkdcSizZU0wDQYJKoZIhvcNAQEBBQAEggEABOrzutnh1LrV8cPcosOu0hnClhGNqOgdIaeRUlhKW5t5LfOnJggXR8ijbt0MFRpO+RS2cayiynXfyGhsZONhmZBOpjoBf2kg9i+Ilve4HpUPma6BEnqQQxTgegURtnZoSI/ks1y5EeVcAiPNPUYkOZd8I6mSaV1j/++rU7IYfZC/SyNuM7xbQbc46fmuqQ58lfj64f041lIeF9ZeCjVhFz2cXQ/afW2+H6OQzzBy38emONHIld8Z87yhZ9y9dFPFdtblf9GrHhNQqRS940yBktFeTH4n4/+SDGDrLVYFwBPupVf5ShFvmRIXYzhZ5fO7z1BVETY3YMZnRVZeewgKJjAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECI8lgixlZBUigBDibzkT0+/eNdHu9IBbQRr9" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-08-26T23:59:59.0000000-07:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="3463D655601F0CA6D3C2B85910F762C20AA2E1DF" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

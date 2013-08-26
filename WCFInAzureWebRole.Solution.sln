@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.WCF.Library", "Calculator.WCF.Library\Calculator.WCF.Library.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Calculator.Azure.CloudService", "Calculator.Azure.CloudService\Calculator.Azure.CloudService.ccproj", "{4B106B50-F5A9-496E-A45A-ED7D84696485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.WebRole", "Calculator.WebRole\Calculator.WebRole.csproj", "{4BB25325-2678-4F98-984C-2C06447AD785}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B106B50-F5A9-496E-A45A-ED7D84696485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B106B50-F5A9-496E-A45A-ED7D84696485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B106B50-F5A9-496E-A45A-ED7D84696485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B106B50-F5A9-496E-A45A-ED7D84696485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BB25325-2678-4F98-984C-2C06447AD785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB25325-2678-4F98-984C-2C06447AD785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB25325-2678-4F98-984C-2C06447AD785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB25325-2678-4F98-984C-2C06447AD785}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
