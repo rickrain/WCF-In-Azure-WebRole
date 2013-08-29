@@ -3,8 +3,8 @@ Import-Module ServerManager
 Install-WindowsFeature -Name AS-TCP-Activation
 
 # Add TCP to site bindings.
-import-module WebAdministration
 # Assume the fist website is for my WebRole.
+import-module WebAdministration
 $site = Get-WebSite | Select-Object -First(1)
 Set-Alias appcmd $env:windir\system32\inetsrv\appcmd.exe
 appcmd set site ""$site.Name"" "-+bindings.[protocol='net.tcp',bindingInformation='808:*']"
