@@ -46,6 +46,8 @@ if ((Get-AzureSubscription -Default -ErrorAction SilentlyContinue) -eq $null)
 
 $workingDir = (Get-Location).Path
 
+# See if the CA subject name already exists.  If so, then the rest
+# of the script will use this one instead of creating a new one.
 $caCert = Get-ChildItem -Path Cert:\CurrentUser\Root -Recurse |
               Where-Object { $_.Subject -eq "CN=$caSubjectName" } |
               Select-Object -Last(1)
