@@ -8,6 +8,7 @@ $serviceName = "[YOUR CLOUD SERVICE NAME]"
 
 # The data center location where the cloud service is (or will be) deployed to.
 # This is only used to create the cloud service if it does not already exist.
+# Use Get-AzureLocation to find a list of locations available for your subscription.
 $serviceLocation = "West US"
 
 # Path to makecert.exe.
@@ -33,6 +34,14 @@ if ((Get-Module -ListAvailable Azure) -eq $null)
 if (!(Test-Path -path $makeCertPath))
 {
     throw "Unable to find makecert.exe.  Update the makeCertPath variable to point to the correct location."
+}
+
+# Make sure a default Azure subscription is set.
+if ((Get-AzureSubscription -Default -ErrorAction SilentlyContinue) -eq $null)
+{
+    throw "A default Azure Subscription needs to be configured.  See this blog for instructions " +
+          "to configure the Windows Azure PowerShell Cmdlets with your subscription. " +
+          "http://michaelwasham.com/windows-azure-powershell-reference-guide/getting-started-with-windows-azure-powershell"
 }
 
 $workingDir = (Get-Location).Path
