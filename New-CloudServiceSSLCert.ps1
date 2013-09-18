@@ -48,7 +48,7 @@ $workingDir = (Get-Location).Path
 
 # See if the CA subject name already exists.  If so, then the rest
 # of the script will use this one instead of creating a new one.
-$caCert = Get-ChildItem -Path Cert:\CurrentUser\Root -Recurse |
+$caCert = Get-ChildItem -Path Cert:\LocalMachine\Root -Recurse |
               Where-Object { $_.Subject -eq "CN=$caSubjectName" } |
               Select-Object -Last(1)
 
@@ -61,7 +61,7 @@ if ($caCert -eq $null)
     $processStartInfo = New-Object System.Diagnostics.ProcessStartInfo
     $processStartInfo.FileName = (Get-Command $makeCertPath).Definition
     $processStartInfo.WorkingDirectory = $workingDir
-    $processStartInfo.Arguments = ("-n ""CN={0}"" -r -ss Root -sk {0}" -f $caSubjectName)
+    $processStartInfo.Arguments = ("-n ""CN={0}"" -r -ss Root -sr LocalMachine -sk {0}" -f $caSubjectName)
     $processStartInfo.UseShellExecute = $false
 
     # Execute makecert.exe
@@ -75,11 +75,13 @@ if ($caCert -eq $null)
 # BEGIN: Create a Test Certificate using the self-signed root CA.
 #
 
+Write-Verbose ("Creating Test Certificate for '{0}.cloudapp.net'." -f $serviceName)
+
 # Prepare to execute makecert.exe
 $processStartInfo = New-Object System.Diagnostics.ProcessStartInfo
 $processStartInfo.FileName = $makeCertPath
 $processStartInfo.WorkingDirectory = $workingDir
-$processStartInfo.Arguments = ("-n ""CN={0}.cloudapp.net"" -is Root -in {1} -sky exchange -pe -ss My" -f $serviceName, $caSubjectName)
+$processStartInfo.Arguments = ("-n ""CN={0}.cloudapp.net"" -is Root -in {1} -sky exchange -pe -ss My -sr LocalMachine" -f $serviceName, $caSubjectName)
 $processStartInfo.UseShellExecute = $false
 
 # Execute makecert.exe
@@ -92,7 +94,7 @@ $process.WaitForExit()
 # END: Create a Test Certificate using the self-signed root CA.
 #
 
-$certStoreMy   = "Cert:\CurrentUser\My"
+$certStoreMy   = "Cert:\LocalMachine\My"
 $cert = Get-ChildItem -Path $certStoreMy -Recurse | 
             Where-Object { $_.Subject -eq ("CN={0}.cloudapp.net" -f $serviceName) } |
             Select-Object -Last(1)
@@ -102,7 +104,7 @@ $certPath = "{0}\{1}" -f ($certStoreMy, $cert.Thumbprint)
 $cloudService = Get-AzureService -ServiceName $serviceName -ErrorAction SilentlyContinue
 if ($cloudService -eq $null)
 {
-    Write-Verbose ("Creating cloud service '{0}'." -f $serviceName)
+    Write-Verbose ("Creating cloud service '{0}.cloudapp.net'." -f $serviceName)
     New-AzureService -ServiceName $serviceName -Location $serviceLocation
 }
 
