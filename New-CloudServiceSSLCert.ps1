@@ -1,4 +1,6 @@
-﻿# The filename prefix to use when creating the .cer and .pvk files.
+﻿# Run script as Administrator in PowerShell.
+#
+# The filename prefix to use when creating the .cer and .pvk files.
 # The filenames will have "CA" appended to them to indicate these are the
 # certificates for the self-signed Certificate Authority.
 $caSubjectName = "[YOUR SELF-SIGNED ROOT AUTHORITY NAME]"
